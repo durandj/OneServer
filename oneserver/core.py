@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 
+# pylint: disable=C0111
+
 ## @package oneserver
 # This is the core part of the server. Start up and normal runtime functions
 # get handled here.
 
-from configuration.configManager import ConfigManager
-from pluginManager import PluginManager
-from dlna import DLNAService
-import tcs
-from vfs import VirtualFileSystem
-from manager import OneServerManager
-from scheduler import TaskScheduler
+from oneserver.configuration import configManager
+from oneserver import dlna, manager, pluginManager, scheduler, tcs, vfs
 
 import logging
 
@@ -20,11 +17,11 @@ class OneServer(object):
 
 	## Creates a OneServer object.
 	def __init__(self):
-		#Create a manager for different instances.
-		self.manager = OneServerManager()
+		# Create a manager for different instances.
+		self.manager = manager.OneServerManager()
 
 		# Load the configurations.
-		self.config = ConfigManager()
+		self.config = configManager.ConfigManager()
 		self.config.loadConfigFile()
 		self.manager.config = self.config
 
@@ -40,7 +37,7 @@ class OneServer(object):
 		self.log.info('Preparing the OneServer media server to start...')
 
 		# Start plugin loader.
-		self.pluginManager = PluginManager()
+		self.pluginManager = pluginManager.PluginManager()
 		self.manager.pluginManager = self.pluginManager
 		self.pluginManager.loadEnablePluginList(self.config)
 		self.pluginManager.loadPlugins()
@@ -55,7 +52,7 @@ class OneServer(object):
 		# Start scheduler.
 		self.log.debug('Starting task scheduler...')
 
-		self.scheduler = TaskScheduler()
+		self.scheduler = scheduler.TaskScheduler()
 		self.manager.scheduler = self.scheduler
 		self.scheduler.startScheduler()
 
@@ -65,7 +62,7 @@ class OneServer(object):
 		self.log.debug('Starting virtual file system...')
 
 		#TODO: Load loaded Storage plugins into vfs
-		self.vfs = VirtualFileSystem()
+		self.vfs = vfs.VirtualFileSystem()
 		plugins = self.storagePlugins
 
 		for plugin in plugins:
@@ -78,7 +75,7 @@ class OneServer(object):
 		# Start DLNA
 		self.log.debug('Preparing DLNA service...')
 
-		self.dlna = DLNAService(self.config)
+		self.dlna = dlna.DLNAService(self.config)
 		self.manager.dlna = self.dlna.dlna
 
 		self.log.debug('DLNA service ready.')
@@ -120,7 +117,7 @@ if __name__ == '__main__':
 	while(run):
 		cmd = raw_input("What do you want to do? ")
 
-		if ("stop" or "Stop") in cmd:
+		if cmd.lower() == 'stop':
 			run = False
 		else:
 			server.log.info('Unknown command')
