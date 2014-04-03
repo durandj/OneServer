@@ -6,15 +6,15 @@ from wrappers.libDLNA import DLNAInterface
 def populate(files):
 	if len(files) <= 0:
 		raise ValueError("Invalid list")
-	
+
 	manager = OneServerManager()
-	
+
 	tcsRoot =  Entry("/tcs", manager.CONTAINER_MIME, None, [], "TCS", "tcs", -1, None)
 
 
 	idlna = DLNAInterface()
 	dlna  = manager.dlna
-	
+
 	for f in files:
 		profile = idlna.dlna_guess_media_profile(dlna, f)
 
@@ -27,7 +27,7 @@ def populate(files):
 		except ValueError:
 			OneServerManager().log.debug("Invalid profile object, skipping "+f)
 			break
-		
+
 		size = os.path.getsize(f)
 
 		child = Entry(f, profile, tcsRoot, None, f, "", size, createLocalFileHandle)

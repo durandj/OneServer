@@ -231,152 +231,152 @@ class CDSService(Service):
 	CDS_SERVICE_ID = "urn:upnp-org:serviceId:ContentDirectory"
 	CDS_SERVICE_TYPE = "urn:schemas-upnp-org:service:ContentDirectory:1"
 
-	# Represent the CDS GetSearchCapabilities action. 
+	# Represent the CDS GetSearchCapabilities action.
 	SERVICE_CDS_ACTION_SEARCH_CAPS = "GetSearchCapabilities"
 
-	# Represent the CDS GetSortCapabilities action. 
+	# Represent the CDS GetSortCapabilities action.
 	SERVICE_CDS_ACTION_SORT_CAPS = "GetSortCapabilities"
 
-	# Represent the CDS GetSystemUpdateID action. 
+	# Represent the CDS GetSystemUpdateID action.
 	SERVICE_CDS_ACTION_UPDATE_ID = "GetSystemUpdateID"
 
-	# Represent the CDS Browse action. 
+	# Represent the CDS Browse action.
 	SERVICE_CDS_ACTION_BROWSE = "Browse"
 
-	# Represent the CDS Search action. 
+	# Represent the CDS Search action.
 	SERVICE_CDS_ACTION_SEARCH = "Search"
-	
+
 	# Represents the CDS CreatObject action
 	SERVICE_CDS_ACTION_CREATE_OBJECT = "CreateObject"
 
-	# Represent the CDS SearchCaps argument. 
+	# Represent the CDS SearchCaps argument.
 	SERVICE_CDS_ARG_SEARCH_CAPS = "SearchCaps"
 
-	# Represent the CDS SortCaps argument. 
+	# Represent the CDS SortCaps argument.
 	SERVICE_CDS_ARG_SORT_CAPS = "SortCaps"
 
-	# Represent the CDS UpdateId argument. 
+	# Represent the CDS UpdateId argument.
 	SERVICE_CDS_ARG_UPDATE_ID = "Id"
 
-	# Represent the CDS StartingIndex argument. 
+	# Represent the CDS StartingIndex argument.
 	SERVICE_CDS_ARG_START_INDEX = "StartingIndex"
 
-	# Represent the CDS RequestedCount argument. 
+	# Represent the CDS RequestedCount argument.
 	SERVICE_CDS_ARG_REQUEST_COUNT = "RequestedCount"
 
-	# Represent the CDS ObjectID argument. 
+	# Represent the CDS ObjectID argument.
 	SERVICE_CDS_ARG_OBJECT_ID = "ObjectID"
 
-	# Represent the CDS Filter argument. 
+	# Represent the CDS Filter argument.
 	SERVICE_CDS_ARG_FILTER = "Filter"
 
-	# Represent the CDS BrowseFlag argument. 
+	# Represent the CDS BrowseFlag argument.
 	SERVICE_CDS_ARG_BROWSE_FLAG = "BrowseFlag"
 
-	# Represent the CDS SortCriteria argument. 
+	# Represent the CDS SortCriteria argument.
 	SERVICE_CDS_ARG_SORT_CRIT = "SortCriteria"
 
-	# Represent the CDS SearchCriteria argument. 
+	# Represent the CDS SearchCriteria argument.
 	SERVICE_CDS_ARG_SEARCH_CRIT = "SearchCriteria"
 
-	# Represent the CDS Root Object ID argument. 
+	# Represent the CDS Root Object ID argument.
 	SERVICE_CDS_ROOT_OBJECT_ID = "0"
 
-	# Represent the CDS DIDL Message Metadata Browse flag argument. 
+	# Represent the CDS DIDL Message Metadata Browse flag argument.
 	SERVICE_CDS_BROWSE_METADATA = "BrowseMetadata"
 
-	# Represent the CDS DIDL Message DirectChildren Browse flag argument. 
+	# Represent the CDS DIDL Message DirectChildren Browse flag argument.
 	SERVICE_CDS_BROWSE_CHILDREN = "BrowseDirectChildren"
 
-	# Represent the CDS DIDL Message Result argument. 
+	# Represent the CDS DIDL Message Result argument.
 	SERVICE_CDS_DIDL_RESULT = "Result"
 
-	# Represent the CDS DIDL Message NumberReturned argument. 
+	# Represent the CDS DIDL Message NumberReturned argument.
 	SERVICE_CDS_DIDL_NUM_RETURNED = "NumberReturned"
 
-	# Represent the CDS DIDL Message TotalMatches argument. 
+	# Represent the CDS DIDL Message TotalMatches argument.
 	SERVICE_CDS_DIDL_TOTAL_MATCH = "TotalMatches"
 
-	# Represent the CDS DIDL Message UpdateID argument. 
+	# Represent the CDS DIDL Message UpdateID argument.
 	SERVICE_CDS_DIDL_UPDATE_ID = "UpdateID"
-	
+
 	# Represent the CDS DIDL Message TransferID argument
 	SERVICE_CDS_DIDL_TRANSFER_ID = "TransferID"
 
-	# DIDL parameters 
-	# Represent the CDS DIDL Message Header Namespace. 
+	# DIDL parameters
+	# Represent the CDS DIDL Message Header Namespace.
 	DIDL_NAMESPACE = """xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\" """
 
-	# Represent the CDS DIDL Message Header Tag. 
+	# Represent the CDS DIDL Message Header Tag.
 	DIDL_LITE = "DIDL-Lite"
 
-	# Represent the CDS DIDL Message Item value. 
+	# Represent the CDS DIDL Message Item value.
 	DIDL_ITEM = "item"
 
-	# Represent the CDS DIDL Message Item ID value. 
+	# Represent the CDS DIDL Message Item ID value.
 	DIDL_ITEM_ID = "id"
 
-	# Represent the CDS DIDL Message Item Parent ID value. 
+	# Represent the CDS DIDL Message Item Parent ID value.
 	DIDL_ITEM_PARENT_ID = "parentID"
 
-	# Represent the CDS DIDL Message Item Restricted value. 
+	# Represent the CDS DIDL Message Item Restricted value.
 	DIDL_ITEM_RESTRICTED = "restricted"
 
-	# Represent the CDS DIDL Message Item UPnP Class value. 
+	# Represent the CDS DIDL Message Item UPnP Class value.
 	DIDL_ITEM_CLASS = "upnp:class"
 
-	# Represent the CDS DIDL Message Item Title value. 
+	# Represent the CDS DIDL Message Item Title value.
 	DIDL_ITEM_TITLE = "dc:title"
 
-	# Represent the CDS DIDL Message Item Resource value. 
+	# Represent the CDS DIDL Message Item Resource value.
 	DIDL_RES = "res"
 
-	# Represent the CDS DIDL Message Item Protocol Info value. 
+	# Represent the CDS DIDL Message Item Protocol Info value.
 	DIDL_RES_INFO = "protocolInfo"
-	
+
 	# Represent the CDS DIDL Message Item Import URI value
 	DIDL_RES_IMPORT_URI = "importUri"
 
-	# Represent the CDS DIDL Message Item Resource Size value. 
+	# Represent the CDS DIDL Message Item Resource Size value.
 	DIDL_RES_SIZE = "size"
 
-	# Represent the CDS DIDL Message Container value. 
+	# Represent the CDS DIDL Message Container value.
 	DIDL_CONTAINER = "container"
 
-	# Represent the CDS DIDL Message Container ID value. 
+	# Represent the CDS DIDL Message Container ID value.
 	DIDL_CONTAINER_ID = "id"
 
-	# Represent the CDS DIDL Message Container Parent ID value. 
+	# Represent the CDS DIDL Message Container Parent ID value.
 	DIDL_CONTAINER_PARENT_ID = "parentID"
 
-	# Represent the CDS DIDL Message Container number of children value. 
+	# Represent the CDS DIDL Message Container number of children value.
 	DIDL_CONTAINER_CHILDS = "childCount"
 
-	# Represent the CDS DIDL Message Container Restricted value. 
+	# Represent the CDS DIDL Message Container Restricted value.
 	DIDL_CONTAINER_RESTRICTED = "restricted"
 
-	# Represent the CDS DIDL Message Container Searchable value. 
+	# Represent the CDS DIDL Message Container Searchable value.
 	DIDL_CONTAINER_SEARCH = "searchable"
 
-	# Represent the CDS DIDL Message Container UPnP Class value. 
+	# Represent the CDS DIDL Message Container UPnP Class value.
 	DIDL_CONTAINER_CLASS = "upnp:class"
 
-	# Represent the CDS DIDL Message Container Title value. 
+	# Represent the CDS DIDL Message Container Title value.
 	DIDL_CONTAINER_TITLE = "dc:title"
 
-	# Represent the = "upnp:class" reserved keyword for Search action 
+	# Represent the = "upnp:class" reserved keyword for Search action
 	SEARCH_CLASS_MATCH_KEYWORD = "(upnp:class = \""
 
-	# Represent the = "upnp:class derived from" reserved keyword 
+	# Represent the = "upnp:class derived from" reserved keyword
 	SEARCH_CLASS_DERIVED_KEYWORD = "(upnp:class derivedfrom \""
 
-	# Represent the = "res@protocolInfo contains" reserved keyword 
+	# Represent the = "res@protocolInfo contains" reserved keyword
 	SEARCH_PROTOCOL_CONTAINS_KEYWORD = "(res@protocolInfo contains \""
 
-	# Represent the Search default keyword 
+	# Represent the Search default keyword
 	SEARCH_OBJECT_KEYWORD = "object"
 
-	# Represent the Search 'AND' connector keyword 
+	# Represent the Search 'AND' connector keyword
 	SEARCH_AND = ") and ("
 
 	#The MIME type for a container
@@ -385,7 +385,7 @@ class CDSService(Service):
 	##
 	# Creates the CDS Service
 	def __init__(self):
-		self.id_t    = self.CDS_SERVICE_ID 
+		self.id_t    = self.CDS_SERVICE_ID
 		self.type_t  = self.CDS_SERVICE_TYPE
 		actions = dict()
 		actions['GetSearchCapabilities'] = CDSService.getSearchCapabilities
@@ -453,7 +453,7 @@ class CDSService(Service):
 			metadata = False
 		else:
 			return False
-		
+
 		entry = manager.rootEntry.getChild(_id)
 
 		if not entry and _id < 0:
@@ -467,7 +467,7 @@ class CDSService(Service):
 
 		result_count = 0
 		if metadata:
-			result_count,out = CDSService.cdsBrowseMetadata(event, out, index, count, entry, _filter) 
+			result_count,out = CDSService.cdsBrowseMetadata(event, out, index, count, entry, _filter)
 		else:
 			result_count,out = CDSService.cdsBrowseDirectChildren(event, out, index, count, entry, _filter)
 
@@ -517,7 +517,7 @@ class CDSService(Service):
 		Service.upnpAddResponse(event, CDSService.SERVICE_CDS_DIDL_UPDATE_ID)
 
 		return event['status']
-	
+
 	##
 	# Handles requests to create new files on the server.
 	@staticmethod
@@ -527,29 +527,29 @@ class CDSService(Service):
 
 		if not event['status']:
 			return False
-				
+
 		#Get args
 		containerId = Service.upnpGetUI4(event['request'], "ContainerID")
 		elements = Service.upnpGetString(event['request'], "Elements")
 		elements = parseString(elements)
-		
+
 		#Get information out of elements
 		item = elements.getElementsByTagName("item")[0]
 		title = (item.getElementsByTagName("dc:title")[0]).childNodes
 		mediaClass = (item.getElementsByTagName("upnp:class")[0]).childNodes
-		
+
 		#Create Entry Object
 		entry = Entry("/upload/"+title, mediaClass, OneServerManager().uploadRoot, None, title, "", -1, None)
-		
+
 		#Create Response
 		response = ""
 		CDSService.didlAddHeader(response)
 		CDSService.didlAddItem(response, entry._id, entry.parent._id, "false", entry.dlnaProfile, entry.title, "*:*:*:*", "0", entry.url, "")
 		CDSService.didlAddFooter(response)
-		
+
 		Service.upnpAddResponse(event, CDSService.SERVICE_DIDL_RESULT, response)
 		Service.upnpAddResponse(event, CDSService.SERVICE_CDS_ARG_OBJECT_ID, entry._id)
-		
+
 		return event["status"]
 
 	##
@@ -558,14 +558,14 @@ class CDSService(Service):
 	def addMetadata(entry,response):
 		#TODO:
 		return response
-		
+
 	##
 	# Checks if the filter has the value
 	@staticmethod
 	def filterHasVal(_filter, val):
 		if _filter is "*":
 			return True
-		
+
 		if _filter is not None:
 			tokens = _filter.split(",")
 			if val in tokens:
@@ -591,7 +591,7 @@ class CDSService(Service):
 		if value is not None:
 			buf = buf + (" {0}=\"{1}\"".format(param,value))
 		return buf
-	
+
 	@staticmethod
 	def didlAddValue(buf,param,value):
 		return buf + (" {0}=\"{1!s}\"".format(param,value))
@@ -629,14 +629,14 @@ class CDSService(Service):
 	@staticmethod
 	def didlAddContainer(buf, containerId, parentId, childCount, restricted, searchable, title, _class):
 		buf = buf + ("<{0}".format(CDSService.DIDL_CONTAINER))
-		
+
 		buf = CDSService.didlAddValue(buf, CDSService.DIDL_CONTAINER_ID, containerId)
 		buf = CDSService.didlAddValue(buf, CDSService.DIDL_CONTAINER_PARENT_ID, parentId)
 		if childCount >=0:
 			buf = CDSService.didlAddValue(buf, CDSService.DIDL_CONTAINER_CHILDS, childCount)
 		buf = CDSService.didlAddParam(buf, CDSService.DIDL_CONTAINER_RESTRICTED, restricted)
 		buf = CDSService.didlAddParam(buf, CDSService.DIDL_CONTAINER_SEARCH, searchable)
-		
+
 		buf = buf + (">")
 
 		buf = CDSService.didlAddTag(buf, CDSService.DIDL_CONTAINER_CLASS, _class)
@@ -652,7 +652,7 @@ class CDSService(Service):
 	def cdsBrowseMetadata(event, buf, index, count, entry, _filter):
 		if entry is None:
 			return 0,buf
-		
+
 		resultCount = 0
 		if entry.children is None: # File
 			protocol = ""
@@ -663,9 +663,9 @@ class CDSService(Service):
 							    dlna.dlna_org_operation_t['DLNA_ORG_OPERATION_RANGE'],
 							    dlna.flags,
 							    entry.dlnaProfile)
-			
+
 			buf = CDSService.didlAddHeader(buf)
-			
+
 			buf = CDSService.didlAddItem(buf,
 					  entry._id,
 					  entry.parent._id if entry.parent is not None else -1,
@@ -676,7 +676,7 @@ class CDSService(Service):
 					  entry.size,
 					  entry.url,
 					  _filter)
-			
+
 			buf = CDSService.didlAddFooter(buf)
 			for a in range(index, min(index+count, -1)):
 					resultCount += 1
@@ -715,7 +715,7 @@ class CDSService(Service):
 		#If index = 0 and count = 0 then all children must be returned
 		if (index is 0) and (count is 0):
 			count = len(entry.children)
-		
+
 		for child in entry.children:
 			if (count is 0) or (resultCount < count):
 				if child.children is not None: #Container
@@ -724,7 +724,7 @@ class CDSService(Service):
 							       len(child.children), "true", None,
 							       child.title,
 							       CDSService.CONTAINER_MIME)
-				else: #Item 
+				else: #Item
 					manager = OneServerManager()
 					manager.log.debug("child=%s, child.children=%s" % (child,child.children))
 					manager.log.debug("child.fullpath=%s" % child.fullPath)
@@ -783,7 +783,7 @@ class CDSService(Service):
 								  "true", dlna.dlna_profile_upnp_object_item(child.dlnaProfile),
 								  child.title, protocol,
 								  child.size, child.url, _filter)
-						
+
 						resultCount += 1
 		buf = CDSService.didlAddFooter(buf)
 		Service.upnpAddResponse(event, CDSService.SERVICE_CDS_DIDL_RESULT, buf)
@@ -832,7 +832,7 @@ class CDSService(Service):
 					            dlna.dlna_org_operation_t['DLNA_ORG_OPERATION_RANGE'],
 						    dlna.flags,
 						    entry.dlnaProfile)
-			
+
 		keyword = CDSService.SEARCH_OBJECT_KEYWORD #Defaults
 		derivedFrom = False
 		protocolContains = False
@@ -846,7 +846,7 @@ class CDSService(Service):
 		elif searchCriteria is CDSService.SEARCH_PROTOCOL_CONTAINS_KEYWORD:
 			protocolContains = True
 			keyword = CDSService.SEARCH_PROTOCOL_CONTAINS_KEYWORD
-		
+
 		if (protocolContains) and (protocol.find(keyword) >= 0):
 			result = True
 

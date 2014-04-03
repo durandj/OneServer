@@ -35,12 +35,12 @@ class TaskState:
 # is run.
 class ITask(object):
 	##
-	# Creates a task with the given time before its called 
+	# Creates a task with the given time before its called
 	# and performs the requested action when called. The task
 	# can also b e set to repeat itself at the same delay
 	# interval.
 	#
-	# @param task the task to perform when called 
+	# @param task the task to perform when called
 	# @param minutes the number of minutes to wait (default 0)
 	# @param hours the number of hours to wait (default 0)
 	# @param days the number of days to wait (default 0)
@@ -173,11 +173,11 @@ class TaskScheduler():
 		self.running = False
 
 	##
-	# Starts the scheduler's main thread.  
+	# Starts the scheduler's main thread.
 	# No tasks can be run before this method is called
 	def startScheduler(self):
 		if self.mainThread is not None:
-			if self.mainThread.isAlive():		
+			if self.mainThread.isAlive():
 				raise RuntimeError("Tried to start an already started Scheduler")
 			self.mainThread = None
 
@@ -228,7 +228,7 @@ class MainSchedulerThread(threading.Thread):
 			t = TaskThread()
 			t.start()
 			self.pool.append(t)
-	
+
 	##
 	# Main method, starts checking for new tasks to run
 	def run(self):
@@ -251,12 +251,12 @@ class MainSchedulerThread(threading.Thread):
 					#Check if it needs to reoccur
 					if task.recurring:
 						task.timestamp = task.calculateTimestamp()
-						heappush(self.tasks, task)	
+						heappush(self.tasks, task)
 				else:
 					break
 			#After breaking, all tasks that should be run are now running or queued, sleep for 1 min
 			time.sleep(60)
-	
+
 		#When we are stopping, join worker threads, they are already marked as stopped
 		for a in range(maxThreads):
 			self.pool[a].join()

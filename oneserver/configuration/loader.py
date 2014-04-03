@@ -2,6 +2,7 @@
 # @author Benjamin Ebert
 # @date 10-15-12
 # @version 1.0
+
 from configError import LoadingError
 
 import os
@@ -11,7 +12,7 @@ import yaml
 # A helper class that all it does is keep track of the file path you want to load the config from
 # and load that config file with YAML
 class ConLoader(object):
-	
+
 	##
 	# Holds the Filename and path of the config file
 	fileName = 'config.yaml'
@@ -39,7 +40,7 @@ class ConLoader(object):
 		except yaml.YAMLError, exc:
 			raise LoadingError('Yaml Error', 'loadFile')
 		return config
-		
+
 	##
 	# Sets the file name and path to the config file
 	#

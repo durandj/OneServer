@@ -8,28 +8,28 @@ try:
 	from ctypes import c_char_p,c_int,c_void_p
 	from ctypes import POINTER,Structure
 	from ctypes.util import find_library
-	
+
 except ImportError:
 	OneServerManager().log.error("Library Ctypes not found")
 	sys.exit()
 
 ## Provides the libdlna interface
 class DLNAInterface():
-	
-	dlna_protocol_info_type_t = { 
+
+	dlna_protocol_info_type_t = {
 			"DLNA_PROTOCOL_INFO_TYPE_UNKNOWN": 0,
 			"DLNA_PROTOCOL_INFO_TYPE_HTTP"  : 1,
 			"DLNA_PROTOCOL_INFO_TYPE_RTP" 	: 2,
 			"DLNA_PROTOCOL_INFO_TYPE_ANY" 	: 3}
 
-	dlna_org_play_speed_t = { 
+	dlna_org_play_speed_t = {
 			"DLNA_ORG_PLAY_SPEED_INVALID" : 0,
 			"DLNA_ORG_PLAY_SPEED_NORMAL"  : 1}
 
 	dlna_org_conversion_t = {
 			"DLNA_ORG_CONVERSION_NONE" : 0,
 			"DLNA_ORG_CONVERSION_TRANSCODED" : 1}
-	
+
 	dlna_org_operation_t = {
 			"DLNA_ORG_OPERATION_NONE" : 0x00,
 			"DLNA_ORG_OPERATION_RANGE": 0x01,
@@ -79,15 +79,15 @@ class DLNAInterface():
 
 
 
-	
+
 	## Initializes the python interface, must be called before any other method
 	def __init__(self):
 		libPath = find_library("dlna")
 		self.dlna = cdll.LoadLibrary(libPath)
 		dlna = self.dlna
-		
+
 		dlna.dlna_init.restype = POINTER(dlna_t)
-		
+
 		dlna.dlna_uninit.argstypes = [POINTER(dlna_t)]
 
 		dlna.dlna_set_verbosity.argstypes = [POINTER(dlna_t), c_int]
@@ -100,13 +100,13 @@ class DLNAInterface():
 
 		dlna.dlna_guess_media_profile.argstypes = [POINTER(dlna_t), c_char_p]
 		dlna.dlna_guess_media_profile.restype = POINTER(dlna_profile_s)
-		
+
 		dlna.dlna_profile_upnp_object_item.argtypes = [POINTER(dlna_profile_s)]
 		dlna.dlna_profile_upnp_object_item.restype = c_char_p
 
 		dlna.dlna_write_protocol_info.argtype = [c_int, c_int, c_int, c_int, c_int, POINTER(dlna_profile_s)]
 		dlna.dlna_write_protocol_info.restype = c_char_p
-		
+
 		#Oh God, there should be 16 char*
 		dlna.dlna_dms_description_get.argtype = [c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p,c_char_p]
 		dlna.dlna_dms_description_get.restype = c_char_p
@@ -123,7 +123,7 @@ class DLNAInterface():
 	#  @param dlna The DLNA library controller
 	def dlna_uninit(self, dlna):
 		self.dlna.dlna_uninit(dlna)
-	
+
 	## Set verbosity of the library
 	#  @param dlna The DLNA library Controller
 	#  @param level The verbosity level, 0 is off 1 is disable
@@ -203,7 +203,7 @@ class DLNAInterface():
 	# @param cds_scpd_url       UPnP ContentDirectory service SCPD URL.
 	# @param cds_control_url    UPnP ContentDirectory service control URL.
 	# @param cds_event_url      UPnP ContentDirectory service event URL.
-	# 
+	#
 	# @return                       The DMS device description string.
 	def dlna_dms_description_get(self, friendly_name, manufacturer,manufacturer_url, model_description,model_name,
 			model_number, model_url,serial_number,uuid,presentation_url,cms_scpd_url,cms_control_url,
@@ -213,7 +213,7 @@ class DLNAInterface():
 			cms_event_url,cds_scpd_url,cds_control_url,cds_event_url)
 
 
-	
+
 class dlna_profile_s(Structure): pass
 dlna_profile_s._fields_ = [
 		( "id", c_char_p),

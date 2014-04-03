@@ -14,15 +14,15 @@ from entry import Entry
 #
 # Each path is a standard Unix styled path aka /this/is/a/path/to/a/file.  The / is the root which consists of a list of loaded data sources
 class VirtualFileSystem(object):
-	
+
 	##
 	# Used for indicating a file
 	FILE = 1
-	
-	## 
+
+	##
 	# Used for indicating a directory
 	DIR  = 2
-	
+
 	##
 	# Init function for the VirtualFileSystem
 	#
@@ -32,8 +32,8 @@ class VirtualFileSystem(object):
 		self.vfsRoot = Entry("/",OneServerManager().CONTAINER_MIME, None, [], "OneServer", "0", -1, None)
 		OneServerManager().rootEntry = self.vfsRoot
 		OneServerManager().uploadRoot = Entry("/upload",OneServerManager().CONTAINER_MIME, self.vfsRoot, [], "Upload", "0", -1, None)
-			
-		
+
+
 	##
 	# Gets the Entry given by the path.  Raises a DirectoryException if a directory is given
 	#
@@ -45,45 +45,45 @@ class VirtualFileSystem(object):
 	# @throws EntryNotFoundError If the path does not lead to an Entry
 	def get(self, path):
 		self.checkPath(path)
-		
+
 		#Handle the special case of get('/')
 		if path == '/':
 			raise DirectoryError("Tried to get a directory")
-			
+
 		#Get the source to call
 		source = path.split('/')[1]
-		
+
 		entry = self.dataSources[source].get(path)
-		
+
 		return entry
-	
+
 	##
-	# This function functions similar to ls. 
+	# This function functions similar to ls.
 	# If a path to a directory is given, all of the entries in that directory will be returned.
 	# If it is given the path to a file, it will return a list with one entry which is that file.
 	# If any subdirectories are listed, their path will be prefixed with a d such as "d/path/to/dir".
 	#
 	# @param path The path to list
-	# 
+	#
 	# @return A list of strings in the directory
 	#
 	# @throws EntryNotFoundError If the given path does not exist
 	def list(self, path):
 		self.checkPath(path)
-		
+
 		#Handle the special case of list('/')
 		if path == '/':
 			retVal = []
 			for source in self.dataSources.keys():
 				retVal.append("d/{0}".format(source))
-			
+
 			return retVal
-			
+
 		#Get the source to call
 		source = path.split('/')[1]
-		
+
 		return self.dataSources[source].list(path)
-		
+
 	##
 	# This function takes an Entry and adds it to the given data source.
 	#
@@ -96,9 +96,9 @@ class VirtualFileSystem(object):
 	def put(self, entry, source):
 		if source not in self.dataSources.keys():
 			raise ValueError("Given source does not exist")
-			
+
 		return self.dataSources[source].put(entry)
-		
+
 	##
 	# This function searches through all sources to find matching entries
 	#
@@ -108,13 +108,13 @@ class VirtualFileSystem(object):
 	def search(self, metadata):
 		if metadata is None or len(metadata) == 0:
 			raise ValueError("Invalid metadata given")
-		
+
 		matches = []
 		for source in self.dataSources:
 			matches.extend(self.dataSources[source].search(metadata))
-			
+
 		return matches
-		
+
 	##
 	# Loads the given data source into the VirtualFileSystem
 	#
@@ -124,24 +124,24 @@ class VirtualFileSystem(object):
 	def loadDataSource(self, source):
 		if not isinstance(source, IStoragePlugin):
 			raise ValueError("source did not extend IStoragePlugin")
-		
+
 		self.dataSources[source.name] = source
 		source.tree.parent = self.vfsRoot
 		self.vfsRoot.addChild(source.tree)
-		
+
 	##
 	# Unloads the given data source from the VirtualFileSystem
-	# 
+	#
 	# @param name The name of the source to unload
 	def unloadDataSource(self, name):
 		if name == None or name not in self.dataSources.keys():
 			raise ValueError("Invalid name")
 		self.vfsRoot.removeChild(self.dataSources[name].tree)
 		del self.dataSources[name]
-		
-		
+
+
 	##
-	# This function check to see if a path is valid.  
+	# This function check to see if a path is valid.
 	# A valid path is a string that is not empty and starts with / or d/
 	#
 	# @param path The path to check
@@ -153,14 +153,14 @@ class VirtualFileSystem(object):
 			raise ValueError("Path must not be None")
 		if path == "":
 			raise ValueError("Path must not be empty")
-		
+
 		if path[0] == "/":
 			return VirtualFileSystem.FILE
 		elif path[0:2] == "d/":
 			return VirtualFileSystem.DIR
 		else:
 			raise ValueError("Not a valid path " + path)
-			
+
 
 
 
@@ -171,7 +171,7 @@ class DirectoryError(Exception):
 		self.value = value
 	def __str__(self):
 		return repr(self.value)
-		
+
 ##
 # Occurs when an Entry is not found
 class EntryNotFoundError(Exception):
@@ -179,7 +179,7 @@ class EntryNotFoundError(Exception):
 		self.value = value
 	def __str__(self):
 		return repr(self.value)
-		
+
 ##
 # Occurs when trying to upload to a source that doesn't support it
 class UploadNotSupportedError(Exception):

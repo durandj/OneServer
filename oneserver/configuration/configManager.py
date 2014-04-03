@@ -2,6 +2,7 @@
 # @author Benjamin Ebert
 # @date 10-15-12
 # @version 1.0
+
 from loader import ConLoader
 from unloader import ConDumper
 from configError import *
@@ -29,12 +30,12 @@ class ConfigManager(object):
 	##
 	# The plugin path in the config file.
 	pluginPath = root + sectionSeparator + pluginsNode
-	
+
 	##
 	# Constructs a configManager
 	def __init__(self):
 		pass
-	
+
 	##
 	# Loads in a file through the loader.py class
 	#
@@ -45,7 +46,7 @@ class ConfigManager(object):
 
 		if self.configHolder == None:
 			self.configHolder = dict()
-		
+
 	##
 	# Checks to see if a plugin is enabled by looking to see if it is in the plugin list in the main section
 	#
@@ -54,10 +55,10 @@ class ConfigManager(object):
 	# @return true if the plugin is enabled, false otherwise
 	def isPluginEnabled(self, pluginName):
 		return pluginName in self.getFromConfig(self.configHolder, pluginPath)
-		
+
 	##
 	# Gets the plugin specified's config data
-	# 
+	#
 	# @param pluginName Name of the plugin that you want to get the config data for
 	#
 	# @return Dictionary of the plugin's config data or None if it can't find the plugin in the config file
@@ -66,7 +67,7 @@ class ConfigManager(object):
 			return self.configHolder[pluginName]
 		else:
 			return None
-			
+
 	##
 	# Gets data from the Core config Dictionary
 	#
@@ -97,7 +98,7 @@ class ConfigManager(object):
 			return default
 
 		return value
-			
+
 	##
 	# Saves the config Dictionary to a yaml file by using the unloader.py
 	#
@@ -105,7 +106,7 @@ class ConfigManager(object):
 	def saveConfigFile(self, fileName='config.yaml'):
 		dump = ConDumper(fileName)
 		dump.dumpFile(self.configHolder)
-	
+
 	##
 	# Sets value passed in to the key specified
 	#
@@ -123,7 +124,7 @@ class ConfigManager(object):
 				self.configHolder[key] = data
 		except ValueError:
 			raise ConfigManagerError('ValueError', 'configManager')
-	
+
 	##
 	# Sets the Plugin Dictionary passed in to the spot in the config dictionary
 	#
@@ -131,7 +132,7 @@ class ConfigManager(object):
 	# @param pluginDict Dictionary containing the info for the plugin
 	def setPluginConfig(self, pluginName, pluginDict):
 		self.configHolder[pluginName] = pluginDict
-		
+
 	##
 	# Removes plugin section and data from the config data
 	#
@@ -140,7 +141,7 @@ class ConfigManager(object):
 		if pluginName in self.configHolder:
 			del self.configHolder[pluginName]
 
-			
+
 	##
 	# Removes the Plugin from the enablePlugin list
 	#
@@ -148,7 +149,7 @@ class ConfigManager(object):
 	def removePlugin(self, pluginName):
 		if ConfigManager.isPluginEnabled(pluginName):
 			del self.getFromConfig(self.configHolder, pluginPath)[pluginName]
-		
+
 	##
 	# Gets a section or value from the configuration file.
 	#

@@ -21,7 +21,7 @@ FALSE = 0
 # documents. IXML does not implement all the interfaces documented in the DOM2-Core recommendations
 # but defines a subset of the most useful interfaces. A description of the supported interfaces
 # and methods is presented in this section.
-# 
+#
 # For a copmlete discussion on the object model, the object hierarchy, etc., refer to section
 # 1.1 of the DOM2-Core recommendation.
 class IXML_NODE_TYPE:
@@ -159,8 +159,8 @@ class IXML_NamedNodeMap(_IXML_NamedNodeMap):
 IXMLLib = cdll.LoadLibrary(find_library('ixml'))
 
 ##
-# Returns the name of the {\bf Node}, depending on what type of 
-# {\bf Node} it is, in a read-only string. Refer to the table in the 
+# Returns the name of the {\bf Node}, depending on what type of
+# {\bf Node} it is, in a read-only string. Refer to the table in the
 # DOM2-Core for a description of the node names for various interfaces.
 #
 # @param nodeptr Poitner to the node
@@ -173,7 +173,7 @@ IXMLLib.ixmlNode_getNodeName.restype = DOMString
 IXMLLib.ixmlNode_getNodeName.argtypes = [POINTER(IXML_Node)]
 
 ##
-# Returns the value of the {\bf Node} as a string.  Note that this string 
+# Returns the value of the {\bf Node} as a string.  Note that this string
 # is not a copy and modifying it will modify the value of the {\bf Node}.
 #
 # @param nodeptr Poitner to the node
@@ -196,9 +196,9 @@ IXMLLib.ixmlNode_getNodeValue.argtypes = [POINTER(IXML_Node)]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-##	\item {\tt IXML_INVALID_PARAMETER}: The {\bf Node} is not a valid 
+##	\item {\tt IXML_INVALID_PARAMETER}: The {\bf Node} is not a valid
 #		   pointer.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlNode_setNodeValue(nodeptr, newNodeValue):
@@ -208,26 +208,26 @@ IXMLLib.ixmlNode_setNodeValue.restype = c_int
 IXMLLib.ixmlNode_setNodeValue.argtypes = [POINTER(IXML_Node), c_char_p]
 
 ##
-# Retrieves the type of a {\bf Node}.  The defined {\bf Node} constants 
+# Retrieves the type of a {\bf Node}.  The defined {\bf Node} constants
 # are:
 # \begin{itemize}
-#   \item {\tt eATTRIBUTE_NODE} 
+#   \item {\tt eATTRIBUTE_NODE}
 #   \item {\tt eCDATA_SECTION_NODE}
 #   \item {\tt eCOMMENT_NODE}
-#   \item {\tt eDOCUMENT_FRAGMENT_NODE} 
-#   \item {\tt eDOCUMENT_NODE} 
-#   \item {\tt eDOCUMENT_TYPE_NODE} 
-#   \item {\tt eELEMENT_NODE} 
+#   \item {\tt eDOCUMENT_FRAGMENT_NODE}
+#   \item {\tt eDOCUMENT_NODE}
+#   \item {\tt eDOCUMENT_TYPE_NODE}
+#   \item {\tt eELEMENT_NODE}
 #   \item {\tt eENTITY_NODE}
 #   \item {\tt eENTITY_REFERENCE_NODE}
-#   \item {\tt eNOTATION_NODE} 
+#   \item {\tt eNOTATION_NODE}
 #   \item {\tt ePROCESSING_INSTRUCTION_NODE}
 #   \item {\tt eTEXT_NODE}
 # \end{itemize}
 #
 # @param nodeptr A pointer to the node
 #
-# @return [const unsigned short] An integer representing the type of the 
+# @return [const unsigned short] An integer representing the type of the
 # {\bf Node}.
 def ixmlNode_getNodeType(nodeptr):
 	return IXMLLib.ixmlNode_getNodeType(nodeptr)
@@ -240,7 +240,7 @@ IXMLLib.ixmlNode_getNodeType.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Node#] A pointer to the parent {\bf Node} or {\tt NULL} if the 
+# @return [Node#] A pointer to the parent {\bf Node} or {\tt NULL} if the
 # {\bf Node} has no parent.
 def ixmlNode_getParentNode(nodeptr):
 	return IXMLLib.ixmlNode_getParentNode(nodeptr)
@@ -249,7 +249,7 @@ IXMLLib.ixmlNode_getParentNode.restype = POINTER(IXML_Node)
 IXMLLib.ixmlNode_getParentNode.argtypes = [POINTER(IXML_Node)]
 
 ##
-# Retrieves the list of children of a {\bf Node} in a {\bf NodeList} 
+# Retrieves the list of children of a {\bf Node} in a {\bf NodeList}
 # structure.  If a {\bf Node} has no children, {\bf ixmlNode_getChildNodes}
 # returns a {\bf NodeList} structure that contains no {\bf Node}s.
 #
@@ -267,7 +267,7 @@ IXMLLib.ixmlNode_getChildNodes.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Node#] A pointer to the first child {\bf Node} or {\tt NULL} 
+# @return [Node#] A pointer to the first child {\bf Node} or {\tt NULL}
 # if the {\bf Node} does not have any children.
 def ixmlNode_getFirstChild(nodeptr):
 	return IXMLLib.ixmlNode_getFirstChild(nodeptr)
@@ -280,7 +280,7 @@ IXMLLib.ixmlNode_getFirstChild.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Node#] A pointer to the last child {\bf Node} or {\tt NULL} if 
+# @return [Node#] A pointer to the last child {\bf Node} or {\tt NULL} if
 # the {\bf Node} does not have any children.
 def ixmlNode_getLastChild(nodeptr):
 	return IXMLLib.ixmlNode_getLastChild(nodeptr)
@@ -293,7 +293,7 @@ IXMLLib.ixmlNode_getLastChild.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Node#] A pointer to the previous sibling {\bf Node} or 
+# @return [Node#] A pointer to the previous sibling {\bf Node} or
 # {\tt NULL} if no such {\bf Node} exists.
 def ixmlNode_getPreviousSibling(nodeptr):
 	return IXMLLib.ixmlNode_getPreviousSibling(nodeptr)
@@ -306,7 +306,7 @@ IXMLLib.ixmlNode_getPreviousSibling.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Node#] A pointer to the next sibling {\bf Node} or {\tt NULL} 
+# @return [Node#] A pointer to the next sibling {\bf Node} or {\tt NULL}
 # if no such {\bf Node} exists.
 def ixmlNode_getNextSibling(nodeptr):
 	return IXMLLib.ixmlNode_getNextSibling(nodeptr)
@@ -320,7 +320,7 @@ IXMLLib.ixmlNode_getNextSibling.argtypes = [POINTER(IXML_Node)]
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [NamedNodeMap#] A {\bf NamedNodeMap} of the attributes or 
+# @return [NamedNodeMap#] A {\bf NamedNodeMap} of the attributes or
 # {\tt NULL}.
 def ixmlNode_getAttributes(nodeptr):
 	return IXMLLib.ixmlNode_getAttributes(nodeptr)
@@ -329,14 +329,14 @@ IXMLLib.ixmlNode_getAttributes.restype = POINTER(IXML_NamedNodeMap)
 IXMLLib.ixmlNode_getAttributes.argtypes = [POINTER(IXML_Node)]
 
 ##
-# Retrieves the document object associated with this {\bf Node}.  This 
-# owner document {\bf Node} allows other {\bf Node}s to be created in the 
-# context of this document.  Note that {\bf Document} nodes do not have 
+# Retrieves the document object associated with this {\bf Node}.  This
+# owner document {\bf Node} allows other {\bf Node}s to be created in the
+# context of this document.  Note that {\bf Document} nodes do not have
 # an owner document.
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [Document#] A pointer to the owning {\bf Document} or 
+# @return [Document#] A pointer to the owning {\bf Document} or
 # {\tt NULL}, if the {\bf Node} does not have an owner.
 def ixmlNode_getOwnerDocument(nodeptr):
 	return IXMLLib.ixmlNode_getOwnerDocument(nodeptr)
@@ -346,14 +346,14 @@ IXMLLib.ixmlNode_getOwnerDocument.argtypes = [POINTER(IXML_Node)]
 
 ##
 # Retrieves the namespace URI for a {\bf Node} as a {\bf DOMString}.  Only
-# {\bf Node}s of type {\tt eELEMENT_NODE} or {\tt eATTRIBUTE_NODE} can 
-# have a namespace URI.  {\bf Node}s created through the {\bf Document} 
-# interface will only contain a namespace if created using 
+# {\bf Node}s of type {\tt eELEMENT_NODE} or {\tt eATTRIBUTE_NODE} can
+# have a namespace URI.  {\bf Node}s created through the {\bf Document}
+# interface will only contain a namespace if created using
 # {\bf ixmlDocument_createElementNS}.
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [const DOMString] A {\bf DOMString} representing the URI of the 
+# @return [const DOMString] A {\bf DOMString} representing the URI of the
 # namespace or {\tt NULL}.
 def ixmlNode_getNamespaceURI(nodeptr):
 	return IXMLLib.ixmlNode_getNamespaceURI(nodeptr)
@@ -363,14 +363,14 @@ IXMLLib.ixmlNode_getNamespaceURI.argtypes = [POINTER(IXML_Node)]
 
 ##
 # Retrieves the namespace prefix, if present.  The prefix is the name
-# used as an alias for the namespace URI for this element.  Only 
-# {\bf Node}s of type {\tt eELEMENT_NODE} or {\tt eATTRIBUTE_NODE} can have 
-# a prefix. {\bf Node}s created through the {\bf Document} interface will 
+# used as an alias for the namespace URI for this element.  Only
+# {\bf Node}s of type {\tt eELEMENT_NODE} or {\tt eATTRIBUTE_NODE} can have
+# a prefix. {\bf Node}s created through the {\bf Document} interface will
 # only contain a prefix if created using {\bf ixmlDocument_createElementNS}.
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [DOMString] A {\bf DOMString} representing the namespace prefix 
+# @return [DOMString] A {\bf DOMString} representing the namespace prefix
 # or {\tt NULL}.
 def ixmlNode_getPrefix(nodeptr):
 	return IXMLLib.ixmlNode_getPrefix(nodeptr)
@@ -382,12 +382,12 @@ IXMLLib.ixmlNode_getPrefix.argtypes = [POINTER(IXML_Node)]
 # Retrieves the local name of a {\bf Node}, if present.  The local name is
 # the tag name without the namespace prefix.  Only {\bf Node}s of type
 # {\tt eELEMENT_NODE} or {\tt eATTRIBUTE_NODE} can have a local name.
-# {\Bf Node}s created through the {\bf Document} interface will only 
+# {\Bf Node}s created through the {\bf Document} interface will only
 # contain a local name if created using {\bf ixmlDocument_createElementNS}.
 #
 # @param nodeptr A pointer to the node.
 #
-# @return [const DOMString] A {\bf DOMString} representing the local name 
+# @return [const DOMString] A {\bf DOMString} representing the local name
 # of the {\bf Element} or {\tt NULL}.
 def ixmlNode_getLocalName(nodeptr):
 	return IXMLLib.ixmlNode_getLocalName(nodeptr)
@@ -396,12 +396,12 @@ IXMLLib.ixmlNode_getLocalName.restype = DOMString
 IXMLLib.ixmlNode_getLocalName.argtypes = [POINTER(IXML_Node)]
 
 ##
-# Inserts a new child {\bf Node} before the existing child {\bf Node}.  
+# Inserts a new child {\bf Node} before the existing child {\bf Node}.
 # {\bf refChild} can be {\tt NULL}, which inserts {\bf newChild} at the
-# end of the list of children.  Note that the {\bf Node} (or {\bf Node}s) 
+# end of the list of children.  Note that the {\bf Node} (or {\bf Node}s)
 # in {\bf newChild} must already be owned by the owner document (or have no
-# owner at all) of {\bf nodeptr} for insertion.  If not, the {\bf Node} 
-# (or {\bf Node}s) must be imported into the document using 
+# owner at all) of {\bf nodeptr} for insertion.  If not, the {\bf Node}
+# (or {\bf Node}s) must be imported into the document using
 # {\bf ixmlDocument_importNode}.  If {\bf newChild} is already in the tree,
 # it is removed first.
 #
@@ -412,16 +412,16 @@ IXMLLib.ixmlNode_getLocalName.argtypes = [POINTER(IXML_Node)]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or
 #		{\bf newChild} is {\tt NULL}.
-#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: The type of the {\bf Node} 
+#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: The type of the {\bf Node}
 #		does not allow children of the type of {\bf newChild}.
-#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} has an owner 
+#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} has an owner
 #		document that does not match the owner of {\bf nodeptr}.
-#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} is 
-#		read-only or the parent of the {\bf Node} being inserted is 
+#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} is
+#		read-only or the parent of the {\bf Node} being inserted is
 #		read-only.
-#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf refChild} is not a child of 
+#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf refChild} is not a child of
 #		{\bf nodeptr}.
 #   \end{itemize}
 def ixmlNode_insertBefore(nodeptr, newChild, refChild):
@@ -431,10 +431,10 @@ IXMLLib.ixmlNode_insertBefore.restype = c_int
 IXMLLib.ixmlNode_insertBefore.argtypes = [POINTER(IXML_Node), POINTER(IXML_Node), POINTER(IXML_Node)]
 
 ##
-# Replaces an existing child {\bf Node} with a new child {\bf Node} in 
-# the list of children of a {\bf Node}. If {\bf newChild} is already in 
-# the tree, it will first be removed. {\bf returnNode} will contain the 
-# {\bf oldChild} {\bf Node}, appropriately removed from the tree (i.e. it 
+# Replaces an existing child {\bf Node} with a new child {\bf Node} in
+# the list of children of a {\bf Node}. If {\bf newChild} is already in
+# the tree, it will first be removed. {\bf returnNode} will contain the
+# {\bf oldChild} {\bf Node}, appropriately removed from the tree (i.e. it
 # will no longer have an owner document).
 #
 # @param nodeptr A pointer to the node.
@@ -445,16 +445,16 @@ IXMLLib.ixmlNode_insertBefore.argtypes = [POINTER(IXML_Node), POINTER(IXML_Node)
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMTER: Either {\bf nodeptr}, {\bf 
+#	 \item {\tt IXML_INVALID_PARAMTER: Either {\bf nodeptr}, {\bf
 #		   newChild}, or {\bf oldChild} is {\tt NULL}.
-#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: The {\bf newChild} is not 
-#		   a type of {\bf Node} that can be inserted into this tree or 
+#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: The {\bf newChild} is not
+#		   a type of {\bf Node} that can be inserted into this tree or
 #		   {\bf newChild} is an ancestor of {\bf nodePtr}.
-#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} was created from 
+#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} was created from
 #		   a different document than {\bf nodeptr}.
-#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} or 
+#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} or
 #		   its parent is read-only.
-#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldChild} is not a child of 
+#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldChild} is not a child of
 #		   {\bf nodeptr}.
 #   \end{itemize}
 def ixmlNode_replaceChild(nodeptr, newChild, oldChild, returnNode):
@@ -465,8 +465,8 @@ IXMLLib.ixmlNode_replaceChild.argtypes = [POINTER(IXML_Node), POINTER(IXML_Node)
 
 ##
 # Removes a child from the list of children of a {\bf Node}.
-# {\bf returnNode} will contain the {\bf oldChild} {\bf Node}, 
-# appropriately removed from the tree (i.e. it will no longer have an 
+# {\bf returnNode} will contain the {\bf oldChild} {\bf Node},
+# appropriately removed from the tree (i.e. it will no longer have an
 # owner document).
 #
 # @param nodeptr A pointer to the parent of the child to remove
@@ -476,11 +476,11 @@ IXMLLib.ixmlNode_replaceChild.argtypes = [POINTER(IXML_Node), POINTER(IXML_Node)
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or
 #		   {\bf oldChild} is {\tt NULL}.
-#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} or its 
+#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} or its
 #		   parent is read-only.
-#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldChild} is not among the 
+#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldChild} is not among the
 #		   children of {\bf nodeptr}.
 #   \end{itemize}
 def ixmlNode_removeChild(nodeptr, oldChild, returnNode):
@@ -499,14 +499,14 @@ IXMLLib.ixmlNode_removeChild.argtypes = [POINTER(IXML_Node), POINTER(IXML_Node),
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf nodeptr} or
 #		   {\bf newChild} is {\tt NULL}.
-#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: {\bf newChild} is of a type 
-#		   that cannot be added as a child of {\bf nodeptr} or 
+#	 \item {\tt IXML_HIERARCHY_REQUEST_ERR}: {\bf newChild} is of a type
+#		   that cannot be added as a child of {\bf nodeptr} or
 #		   {\bf newChild} is an ancestor of {\bf nodeptr}.
-#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} was created from 
+#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newChild} was created from
 #		   a different document than {\bf nodeptr}.
-#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} is a 
+#	 \item {\tt IXML_NO_MODIFICATION_ALLOWED_ERR}: {\bf nodeptr} is a
 #		   read-only {\bf Node}.
 def ixmlNode_appendChild(nodeptr, newChild):
 	return IXMLLib.ixmlNode_appendChild(nodeptr, newChild)
@@ -519,7 +519,7 @@ IXMLLib.ixmlNode_appendChild.argtype = [POINTER(IXML_Node), POINTER(IXML_Node)]
 #
 # @param nodeptr The node to query for children
 #
-# @return [BOOL] {\tt TRUE} if the {\bf Node} has one or more children 
+# @return [BOOL] {\tt TRUE} if the {\bf Node} has one or more children
 #				otherwise {\tt FALSE}.
 def ixmlNode_hasChildNodes(nodeptr):
 	return IXMLLib.ixmlNode_hasChildNodes(nodeptr)
@@ -530,7 +530,7 @@ IXMLLib.ixmlNode_hasChildNodes.argtypes = [POINTER(IXML_Node)]
 ##
 # Clones a {\bf Node}.  The new {\bf Node} does not have a parent.  The
 # {\bf deep} parameter controls whether the subtree of the {\bf Node} is
-# also cloned.  For details on cloning specific types of {\bf Node}s, 
+# also cloned.  For details on cloning specific types of {\bf Node}s,
 # refer to the DOM2-Core recommendation.
 #
 # @param nodeptr The node to clone
@@ -544,12 +544,12 @@ IXMLLib.ixmlNode_hasChildNodes.restype = POINTER(IXML_Node)
 IXMLLib.ixmlNode_hasChildNodes.argtypes = [POINTER(IXML_Node), c_int]
 
 ##
-# Queries whether this {\bf Node} has attributes.  Note that only 
+# Queries whether this {\bf Node} has attributes.  Note that only
 # {\bf Element} nodes have attributes.
 #
 # @param nodeptr the node to query for attributes
 #
-# @return [BOOL] {\tt TRUE} if the {\bf Node} has attributes otherwise 
+# @return [BOOL] {\tt TRUE} if the {\bf Node} has attributes otherwise
 #				{\tt FALSE}.
 def ixmlNode_hasAttributes(nodeptr):
 	return IXMLLib.ixmlNode_hasAttributes(nodeptr)
@@ -603,7 +603,7 @@ def ixmlDocument_init(nodeptr):
 IXMLLib.ixmlDocument_init.argtypes = [POINTER(IXML_Document)]
 
 ##
-# Creates a new empty {\bf Document} node.  The 
+# Creates a new empty {\bf Document} node.  The
 # {\bf ixmlDocument_createDocumentEx} API differs from the {\bf
 # ixmlDocument_createDocument} API in that it returns an error code
 # describing the reason for the failure rather than just {\tt NULL}.
@@ -613,7 +613,7 @@ IXMLLib.ixmlDocument_init.argtypes = [POINTER(IXML_Document)]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createDocumentEx(doc):
@@ -634,8 +634,8 @@ IXMLLib.ixmlDocument_createDocument.restype = POINTER(IXML_Document)
 ##
 # Creates a new {\bf Element} node with the given tag name.  The new
 # {\bf Element} node has a {\tt nodeName} of {\bf tagName} and
-# the {\tt localName}, {\tt prefix}, and {\tt namespaceURI} set 
-# to {\tt NULL}.  To create an {\bf Element} with a namespace, 
+# the {\tt localName}, {\tt prefix}, and {\tt namespaceURI} set
+# to {\tt NULL}.  To create an {\bf Element} with a namespace,
 # see {\bf ixmlDocument_createElementNS}.
 #
 # The {\bf ixmlDocument_createElementEx} API differs from the {\bf
@@ -649,9 +649,9 @@ IXMLLib.ixmlDocument_createDocument.restype = POINTER(IXML_Document)
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or
 #		   {\bf tagName} is {\tt NULL}.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createElementEx(doc, tagName, rtElement):
@@ -663,14 +663,14 @@ IXMLLib.ixmlDocument_createElementEx.argtypes = [POINTER(IXML_Document), DOMStri
 ##
 # Creates a new {\bf Element} node with the given tag name.  The new
 # {\bf Element} node has a {\tt nodeName} of {\bf tagName} and
-# the {\tt localName}, {\tt prefix}, and {\tt namespaceURI} set 
-# to {\tt NULL}.  To create an {\bf Element} with a namespace, 
+# the {\tt localName}, {\tt prefix}, and {\tt namespaceURI} set
+# to {\tt NULL}.  To create an {\bf Element} with a namespace,
 # see {\bf ixmlDocument_createElementNS}.
 #
 # @param doc The owner Document of the new node.
 # @param tagName The tag name of the new Element node.
 #
-# @return [Document*] A pointer to the new {\bf Element} or {\tt NULL} on 
+# @return [Document*] A pointer to the new {\bf Element} or {\tt NULL} on
 #					 failure.
 def ixmlDocument_createElement(doc, tagName):
 	return IXMLLib.ixmlDocument_createElement(doc, tagName)
@@ -679,7 +679,7 @@ IXMLLib.ixmlDocument_createElement.restype = POINTER(IXML_Element)
 IXMLLib.ixmlDocument_createElement.argtypes = [POINTER(IXML_Document), DOMString]
 
 ##
-# Creates a new {\bf Text} node with the given data.  
+# Creates a new {\bf Text} node with the given data.
 # The {\bf ixmlDocument_createTextNodeEx} API differs from the {\bf
 # ixmlDocument_createTextNode} API in that it returns an error code
 # describing the reason for failure rather than just {\tt NULL}.
@@ -691,9 +691,9 @@ IXMLLib.ixmlDocument_createElement.argtypes = [POINTER(IXML_Document), DOMString
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bf data} 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bf data}
 #		   is {\tt NULL}.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createTextNodeEx(doc, data, textNode):
@@ -729,9 +729,9 @@ IXMLLib.ixmlDocument_createTextNode.argtyeps = [POINTER(IXML_Document), DOMStrin
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bd data} 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bd data}
 #		   is {\tt NULL}.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createCDATASectionEx(doc, data, cdNode):
@@ -746,7 +746,7 @@ IXMLLib.ixmlDocument_createCDATASectionEx.argtypes = [POINTER(IXML_Document), DO
 # @param doc The owner Document of the new node.
 # @param data The data to associate with the new CDATASection node.
 #
-# @return [CDATASection*] A pointer to the new {\bf CDATASection} or 
+# @return [CDATASection*] A pointer to the new {\bf CDATASection} or
 #						 {\tt NULL} on failure.
 def ixmlDocument_createCDATASection(doc, data):
 	return IXMLLib.ixmlDocument_createCDATASection(doc, data)
@@ -755,7 +755,7 @@ IXMLLib.ixmlDocument_createCDATASection.restype = POINTER(IXML_CDATASection)
 IXMLLib.ixmlDocument_createCDATASection.argtypes = [POINTER(IXML_Document), DOMString]
 
 ##
-# Creates a new {\bf Attr} node with the given name.  
+# Creates a new {\bf Attr} node with the given name.
 #
 # @param doc The owner Document of the new node.
 # @param name The name of the new attribute.
@@ -768,7 +768,7 @@ IXMLLib.ixmlDocument_createAttribute.restype = POINTER(IXML_Attr)
 IXMLLib.ixmlDocument_createAttribute.argtypes = [POINTER(IXML_Document), c_char_p]
 
 ##
-# Creates a new {\bf Attr} node with the given name.  
+# Creates a new {\bf Attr} node with the given name.
 #
 # The {\bf ixmlDocument_createAttributeEx} API differs from the {\bf
 # ixmlDocument_createAttribute} API in that it returns an error code
@@ -781,9 +781,9 @@ IXMLLib.ixmlDocument_createAttribute.argtypes = [POINTER(IXML_Document), c_char_
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bf name} 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or {\bf name}
 #		   is {\tt NULL}.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createAttributeEx(doc, name, attrNode):
@@ -795,12 +795,12 @@ IXMLLib.ixmlDocument_createAttributeEx.argtypes = [POINTER(IXML_Document), c_cha
 ##
 # Returns a {\bf NodeList} of all {\bf Elements} that match the given
 # tag name in the order in which they were encountered in a preorder
-# traversal of the {\bf Document} tree.  
+# traversal of the {\bf Document} tree.
 #
 # @param doc The Document to search.
 # @param tagName The tag name to find.
 #
-# @return [NodeList*] A pointer to a {\bf NodeList} containing the 
+# @return [NodeList*] A pointer to a {\bf NodeList} containing the
 #					 matching items or {\tt NULL} on an error.
 def ixmlDocument_getElementsByTagName(doc, tagName):
 	return IXMLLib.ixmlDocument_getElementsByTagName(doc, tagName)
@@ -824,9 +824,9 @@ IXMLLib.ixmlDocument_getElementsByTagName.argtypes = [POINTER(IXML_Document), DO
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc}, 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc},
 #		   {\bf namespaceURI}, or {\bf qualifiedName} is {\tt NULL}.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlDocument_createElementNSEx(doc, namespaceURI, qualifiedName, rtElement):
@@ -843,7 +843,7 @@ IXMLLib.ixmlDocument_createElementNSEx.argtypes = [POINTER(IXML_Document), DOMSt
 # @param namespaceURI The namespace URI for the new Element.
 # @param qualifiedName The qualified name of the new Element.
 #
-# @return [Element*] A pointer to the new {\bf Element} or {\tt NULL} on 
+# @return [Element*] A pointer to the new {\bf Element} or {\tt NULL} on
 #					failure.
 def ixmlDocument_createElementNS(doc, namespaceURI, qualifiedName):
 	return IXMLLib.ixmlDocument_createElementNS(doc, namespaceURI, qualifiedName)
@@ -854,7 +854,7 @@ IXMLLib.ixmlDocument_createElementNS.argtypes = [POINTER(IXML_Document), DOMStri
 ##
 # Returns a {\bf NodeList} of {\bf Elements} that match the given
 # local name and namespace URI in the order they are encountered
-# in a preorder traversal of the {\bf Document} tree.  Either 
+# in a preorder traversal of the {\bf Document} tree.  Either
 # {\bf namespaceURI} or {\bf localName} can be the special {\tt "*"}
 # character, which matches any namespace or any local name respectively.
 #
@@ -862,7 +862,7 @@ IXMLLib.ixmlDocument_createElementNS.argtypes = [POINTER(IXML_Document), DOMStri
 # @param namespaceURI The namespace of the elements to find or "*" to match any namespace.
 # @param localName The local name of the elements to find or "*" to match any local name.
 #
-# @return [NodeList*] A pointer to a {\bf NodeList} containing the 
+# @return [NodeList*] A pointer to a {\bf NodeList} containing the
 #					 matching items or {\tt NULL} on an error.
 def ixmlDocument_getElementsByTagNameNS(doc, namespaceURI, localName):
 	return IXMLLib.ixmlDocument_getElementsByTagNameNS(doc, namespaceURI, localName)
@@ -876,7 +876,7 @@ IXMLLib.ixmlDocument_getElementsByTagNameNS.argtypes = [POINTER(IXML_Document), 
 # @param doc The owner Document of the Element.
 # @param tagName The name of the Element.
 #
-# @return [Element*] A pointer to the matching {\bf Element} or 
+# @return [Element*] A pointer to the matching {\bf Element} or
 #					{\tt NULL} on an error.
 def ixmlDocument_getElementbyId(doc, tagName):
 	return IXMLLib.ixmlDocument_getElementById(doc, tagName)
@@ -885,8 +885,8 @@ IXMLLib.ixmlDocument_getElementById.restype = POINTER(IXML_Element)
 IXMLLib.ixmlDocument_getElementById.argtypes = [POINTER(IXML_Document), DOMString]
 
 ##
-# Frees a {\bf Document} object and all {\bf Node}s associated with it.  
-# Any {\bf Node}s extracted via any other interface function, e.g. 
+# Frees a {\bf Document} object and all {\bf Node}s associated with it.
+# Any {\bf Node}s extracted via any other interface function, e.g.
 # {\bf ixmlDocument_GetElementById}, become invalid after this call unless
 # explicitly cloned.
 #
@@ -899,11 +899,11 @@ def ixmlDocument_free(doc):
 IXMLLib.ixmlDocument_free.argtypes = [POINTER(IXML_Document)]
 
 ##
-# Imports a {\bf Node} from another {\bf Document} into this 
-# {\bf Document}.  The new {\bf Node} does not a have parent node: it is a 
-# clone of the original {\bf Node} with the {\tt ownerDocument} set to 
-# {\bf doc}.  The {\bf deep} parameter controls whether all the children 
-# of the {\bf Node} are imported.  Refer to the DOM2-Core recommendation 
+# Imports a {\bf Node} from another {\bf Document} into this
+# {\bf Document}.  The new {\bf Node} does not a have parent node: it is a
+# clone of the original {\bf Node} with the {\tt ownerDocument} set to
+# {\bf doc}.  The {\bf deep} parameter controls whether all the children
+# of the {\bf Node} are imported.  Refer to the DOM2-Core recommendation
 # for details on importing specific node types.
 #
 # @param doc The Document into which to import.
@@ -914,11 +914,11 @@ IXMLLib.ixmlDocument_free.argtypes = [POINTER(IXML_Document)]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf doc} or
 #		   {\bf importNode} is not a valid pointer.
-#	 \item {\tt IXML_NOT_SUPPORTED_ERR}: {\bf importNode} is a 
+#	 \item {\tt IXML_NOT_SUPPORTED_ERR}: {\bf importNode} is a
 #		   {\bf Document}, which cannot be imported.
-#	 \item {\tt IXML_FAILED}: The import operation failed because the 
+#	 \item {\tt IXML_FAILED}: The import operation failed because the
 #		   {\bf Node} to be imported could not be cloned.
 #   \end{itemize}
 def ixmlDocument_importNode(doc, importNode, deep, rtNode):
@@ -943,7 +943,7 @@ IXMLLib.ixmlElement_init.argtypes = [POINTER(IXML_Element)]
 #
 # @param element The element from which to retrieve the name.
 #
-# @return [const DOMString] A {\bf DOMString} representing the name of the 
+# @return [const DOMString] A {\bf DOMString} representing the name of the
 #						   {\bf Element}.
 def ixmlElement_getTagName(element):
 	return IXMLLib.ixmlElement_getTagName(element)
@@ -952,12 +952,12 @@ IXMLLib.ixmlElement_getTagName.restype = DOMString
 IXMLLib.ixmlElement_getTagName.argtypes = [POINTER(IXML_Element)]
 
 ##
-# Retrieves an attribute of an {\bf Element} by name.  
+# Retrieves an attribute of an {\bf Element} by name.
 #
 # @param element The element from which to retrieve the attribute.
 # @param name The name of the attribute to retrieve.
 #
-# @return [DOMString] A {\bf DOMString} representing the value of the 
+# @return [DOMString] A {\bf DOMString} representing the value of the
 #					 attribute.
 def ixmlElement_getAttribute(element, name):
 	return IXMLLib.ixmlElement_getTagName(element, name)
@@ -968,7 +968,7 @@ IXMLLib.ixmlElement_getTagName.argtypes = [POINTER(IXML_Element), DOMString]
 ##
 # Adds a new attribute to an {\bf Element}.  If an attribute with the same
 # name already exists, the attribute value will be updated with the
-# new value in {\bf value}.  
+# new value in {\bf value}.
 #
 # @param element The element on which to set the attribute.
 # @param name The name of the attribute.
@@ -978,11 +978,11 @@ IXMLLib.ixmlElement_getTagName.argtypes = [POINTER(IXML_Element), DOMString]
 # @return [int] An integer representing of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element}, 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element},
 #		   {\bf name}, or {\bf value} is {\tt NULL}.
-#	 \item {\tt IXML_INVALID_CHARACTER_ERR}: {\bf name} contains an 
+#	 \item {\tt IXML_INVALID_CHARACTER_ERR}: {\bf name} contains an
 #		   illegal character.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete the operation.
 #   \end{itemize}
 def ixmlElement_setAttribute(element, name, value):
@@ -992,7 +992,7 @@ IXMLLib.ixmlElement_setAttribute.restype = c_int
 IXMLLib.ixmlElement_setAttribute.argtypes = [POINTER(IXML_Element), DOMString, DOMString]
 
 ##
-# Removes an attribute by name.  
+# Removes an attribute by name.
 #
 # @param element The element from which to remove the attribute.
 # @param name The name of the attribute to remove.
@@ -1000,7 +1000,7 @@ IXMLLib.ixmlElement_setAttribute.argtypes = [POINTER(IXML_Element), DOMString, D
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or
 #		   {\bf name} is {\tt NULL}.
 #   \end{itemize}
 def ixmlElement_removeAttribute(element, name):
@@ -1010,14 +1010,14 @@ IXMLLib.ixmlElement_removeAttribute.restype = c_int
 IXMLLib.ixmlElement_removeAttribute.argtypes = [POINTER(IXML_Element), DOMString]
 
 ##
-# Retrieves an attribute node by name.  See 
+# Retrieves an attribute node by name.  See
 # {\bf ixmlElement_getAttributeNodeNS} to retrieve an attribute node using
 # a qualified name or namespace URI.
 #
 # @param element The element from which to get the attribute node.
 # @param name The name of the attribute node to find.
 #
-# @return [Attr*] A pointer to the attribute matching {\bf name} or 
+# @return [Attr*] A pointer to the attribute matching {\bf name} or
 #				 {\tt NULL} on an error.
 def ixmlElement_getAttributeNode(element, name):
 	return IXMLLib.ixmlElement_getAttributeNode(element, name)
@@ -1038,11 +1038,11 @@ IXMLLib.ixmlElement_getAttributeNode.argtypes = [POINTER(IXML_Element), DOMStrin
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or
 #		   {\bf newAttr} is {\tt NULL}.
-#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newAttr} does not belong 
+#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newAttr} does not belong
 #		   to the same one as {\bf element}.
-#	 \item {\tt IXML_INUSE_ATTRIBUTE_ERR}: {\bf newAttr} is already 
+#	 \item {\tt IXML_INUSE_ATTRIBUTE_ERR}: {\bf newAttr} is already
 #		   an attribute of another {\bf Element}.
 #   \end{itemize}
 def ixmlElement_setAttributeNode(element, newAttr, rtAttr):
@@ -1052,7 +1052,7 @@ IXMLLib.ixmlElement_setAttributeNode.restype = c_int
 IXMLLib.ixmlElement_setAttributeNode.argtypes = [POINTER(IXML_Element), POINTER(IXML_Attr), POINTER(POINTER(IXML_Attr))]
 
 ##
-# Removes the specified attribute node from an {\bf Element}.  
+# Removes the specified attribute node from an {\bf Element}.
 #
 # @param element The element from which to remove the attribute.
 # @param oldAttr The attribute to remove from the element.
@@ -1061,9 +1061,9 @@ IXMLLib.ixmlElement_setAttributeNode.argtypes = [POINTER(IXML_Element), POINTER(
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or
 #		   {\bf oldAttr} is {\tt NULL}.
-#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldAttr} is not among the list 
+#	 \item {\tt IXML_NOT_FOUND_ERR}: {\bf oldAttr} is not among the list
 #		   attributes of {\bf element}.
 #   \end{itemize}
 def ixmlElement_removeAttributeNode(element, oldAttr, rtAttr):
@@ -1080,7 +1080,7 @@ IXMLLib.ixmlElement_removeAttributeNode.argtypes = [POINTER(IXML_Element), POINT
 # @param element The element from which to start the search.
 # @param tagName The name of the tag for which to search.
 #
-# @return [NodeList*] A {\bf NodeList} of the matching {\bf Element}s or 
+# @return [NodeList*] A {\bf NodeList} of the matching {\bf Element}s or
 #					 {\tt NULL} on an error.
 def ixmlElement_getElementsByTagName(element, tagName):
 	return IXMLLib.ixmlElement_getElementsByTagName(element, tagName)
@@ -1095,7 +1095,7 @@ IXMLLib.ixmlElement_getElementsByTagName.argtypes = [POINTER(IXML_Element), DOMS
 # @param namespaceURI The namespace URI of teh attribute.
 # @param localname The local name of teh attribute.
 #
-# @return [DOMString] A {\bf DOMString} representing the value of the 
+# @return [DOMString] A {\bf DOMString} representing the value of the
 #					 matching attribute.
 def ixmlElement_getAttributeNS(element, namespaceURI, localname):
 	return IXMLLib.ixmlElement_getAttributeNS(element, namespaceURI, localname)
@@ -1104,9 +1104,9 @@ IXMLLib.ixmlElement_getAttributeNS.restype = DOMString
 IXMLLib.ixmlElement_getAttributeNS.argtypes = [POINTER(IXML_Element), DOMString, DOMString]
 
 ##
-# Adds a new attribute to an {\bf Element} using the local name and 
-# namespace URI.  If another attribute matches the same local name and 
-# namespace, the prefix is changed to be the prefix part of the 
+# Adds a new attribute to an {\bf Element} using the local name and
+# namespace URI.  If another attribute matches the same local name and
+# namespace, the prefix is changed to be the prefix part of the
 # {\tt qualifiedName} and the value is changed to {\bf value}.
 #
 # @param element The element on which to set the attribute.
@@ -1117,15 +1117,15 @@ IXMLLib.ixmlElement_getAttributeNS.argtypes = [POINTER(IXML_Element), DOMString,
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element}, 
-#		   {\bf namespaceURI}, {\bf qualifiedName}, or {\bf value} is 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element},
+#		   {\bf namespaceURI}, {\bf qualifiedName}, or {\bf value} is
 #		   {\tt NULL}.
-#	 \item {\tt IXML_INVALID_CHARACTER_ERR}: {\bf qualifiedName} contains 
+#	 \item {\tt IXML_INVALID_CHARACTER_ERR}: {\bf qualifiedName} contains
 #		   an invalid character.
-#	 \item {\tt IXML_NAMESPACE_ERR}: Either the {\bf qualifiedName} or 
-#		   {\bf namespaceURI} is malformed.  Refer to the DOM2-Core for 
+#	 \item {\tt IXML_NAMESPACE_ERR}: Either the {\bf qualifiedName} or
+#		   {\bf namespaceURI} is malformed.  Refer to the DOM2-Core for
 #		   possible reasons.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exist 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exist
 #		   to complete the operation.
 #	 \item {\tt IXML_FAILED}: The operation could not be completed.
 #   \end{itemize}
@@ -1145,7 +1145,7 @@ IXMLLib.ixmlElement_setAttributeNS.argtypes = [POINTER(IXML_Element), DOMString,
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element}, 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element},
 #		   {\bf namespaceURI}, or {\bf localName} is {\tt NULL}.
 #   \end{itemize}
 def ixmlElement_removeAttributeNS(element, namespaceURI, localName):
@@ -1170,8 +1170,8 @@ IXMLLib.ixmlElement_getAttributeNodeNS.argtypes = [POINTER(IXML_Element), DOMStr
 
 ##
 # Adds a new attribute node.  If an attribute with the same local name
-# and namespace URI already exists in the {\bf Element}, the existing 
-# attribute node is replaced with {\bf newAttr} and the old returned in 
+# and namespace URI already exists in the {\bf Element}, the existing
+# attribute node is replaced with {\bf newAttr} and the old returned in
 # {\bf rcAttr}.
 #
 # @param element The element in which to add the attribute node.
@@ -1181,11 +1181,11 @@ IXMLLib.ixmlElement_getAttributeNodeNS.argtypes = [POINTER(IXML_Element), DOMStr
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or 
+#	 \item {\tt IXML_INVALID_PARAMETER}: Either {\bf element} or
 #		   {\bf newAttr} is {\tt NULL}.
-#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newAttr} does not belong 
+#	 \item {\tt IXML_WRONG_DOCUMENT_ERR}: {\bf newAttr} does not belong
 #		   to the same document as {\bf element}.
-#	 \item {\tt IXML_INUSE_ATTRIBUTE_ERR}: {\bf newAttr} already is an 
+#	 \item {\tt IXML_INUSE_ATTRIBUTE_ERR}: {\bf newAttr} already is an
 #		   attribute of another {\bf Element}.
 #   \end{itemize}
 def ixmlElement_setAttributeNodeNS(element, newAttr, rcAttr):
@@ -1203,7 +1203,7 @@ IXMLLib.ixmlElement_setAttributeNodeNS.argtypes = [POINTER(IXML_Element), POINTE
 # @param namespaceURI The namespace URi of the elements to find.
 # @param localName The local name of the Elements to find.
 #
-# @return [NodeList*] A {\bf NodeList} of matching {\bf Element}s or 
+# @return [NodeList*] A {\bf NodeList} of matching {\bf Element}s or
 #					 {\tt NULL} on an error.
 def ixmlElement_getElementsByTagNameNS(element, namespaceURI, localName):
 	return IXMLLib.ixmlElement_getElementsByTagNameNS(element, namespaceURI, localName)
@@ -1218,8 +1218,8 @@ IXMLLib.ixmlElement_getElementsByTagNameNS.argtypes = [POINTER(IXML_Element), DO
 # @param element The element on which to check for the attribute.
 # @param name The name of the attribute for which to check.
 #
-# @return [BOOL] {\tt TRUE} if the {\bf Element} has an attribute with 
-#				this name or has a default value for that attribute, 
+# @return [BOOL] {\tt TRUE} if the {\bf Element} has an attribute with
+#				this name or has a default value for that attribute,
 #				otherwise {\tt FALSE}.
 def ixmlElement_hasAttribute(element, name):
 	return IXMLLib.ixmlElement_hasAttribute(element, name)
@@ -1235,8 +1235,8 @@ IXMLLib.ixmlElement_hasAttribute.argtypes = [POINTER(IXML_Element), DOMString]
 # @param namespaceURI The namespace URI of the attribute.
 # @param localName The local name of the attribute.
 #
-# @return [BOOL] {\tt TRUE} if the {\bf Element} has an attribute with 
-#				the given namespace and local name or has a default 
+# @return [BOOL] {\tt TRUE} if the {\bf Element} has an attribute with
+#				the given namespace and local name or has a default
 #				value for that attribute, otherwise {\tt FALSE}.
 def ixmlElement_hasAttributeNS(element, namespaceURI, localName):
 	return IXMLLib.ixmlElement_hasAttributeNS(element, namespaceURI, localName)
@@ -1287,7 +1287,7 @@ IXMLLib.ixmlNamedNodeMap_getNamedItem.argtypes = [POINTER(IXML_NamedNodeMap), DO
 # @param nnMap The NamedNodeMap from which to remove the Node.
 # @param index The index into the map to remove.
 #
-# @return [Node*] A pointer to the {\bf Node}, if found, or {\tt NULL} if 
+# @return [Node*] A pointer to the {\bf Node}, if found, or {\tt NULL} if
 #				 it wasn't.
 def ixmlNamedNodeMap_item(nnMap, index):
 	return IXMLLib.ixmlNamedNodeMap_item(nnMap, index)
@@ -1308,13 +1308,13 @@ def ixmlNamedNodeMap_free(nnMap):
 IXMLLib.ixmlNamedNodeMap_free.argtypes = [POINTER(IXML_NamedNodeMap)]
 
 ##
-# Retrieves a {\bf Node} from a {\bf NodeList} specified by a 
+# Retrieves a {\bf Node} from a {\bf NodeList} specified by a
 # numerical index.
 #
 # @param nList The NodeList from which to retrieve the Node.
 # @param index The index into the NodeList to retrieve.
 #
-# @return [Node*] A pointer to a {\bf Node} or {\tt NULL} if there was an 
+# @return [Node*] A pointer to a {\bf Node} or {\tt NULL} if there was an
 #				 error.
 def ixmlNodeList_item(nList, index):
 	return IXMLLib.ixmlNodeList_item(nList, index)
@@ -1363,7 +1363,7 @@ IXMLLib.ixmlNodeList_free.argtypes = [POINTER(IXML_NodeList)]
 # This function  introduces lots of white space to print the
 # {\bf DOMString} in readable  format.
 #
-# @return [DOMString] A {\bf DOMString} with the XML document representation 
+# @return [DOMString] A {\bf DOMString} with the XML document representation
 #					 of the DOM tree or {\tt NULL} on an error.
 def ixmlPrintDocument(doc):
 	return IXMLLib.ixmlPrintDocument(doc)
@@ -1385,7 +1385,7 @@ IXMLLib.ixmlPrintDocument.argtypes = [POINTER(IXML_Document)]
 #
 # @param doc The root of the Node tree to render to XML text.
 #
-# @return [DOMString] A {\bf DOMString} with the XML text representation 
+# @return [DOMString] A {\bf DOMString} with the XML text representation
 #					 of the DOM tree or {\tt NULL} on an error.
 def ixmlPrintNode(doc):
 	return IXMLLib.ixmlPrintNode(doc)
@@ -1406,7 +1406,7 @@ IXMLLib.ixmlPrintNode.argtypes = [POINTER(IXML_Node)]
 # document is not well formed unless it includes the prolog
 # and at least one element.
 #
-# @return [DOMString] A {\bf DOMString} with the XML text representation 
+# @return [DOMString] A {\bf DOMString} with the XML text representation
 #					 of the DOM tree or {\tt NULL} on an error.
 def ixmlDocumenttoString(doc):
 	return IXMLLib.ixmlDocumenttoString(doc)
@@ -1427,7 +1427,7 @@ IXMLLib.ixmlDocumenttoString.argtypes = [POINTER(IXML_Document)]
 #
 # @param doc The root of the Node tree to render to XML text.
 #
-# @return [DOMString] A {\bf DOMString} with the XML text representation 
+# @return [DOMString] A {\bf DOMString} with the XML text representation
 #					 of the DOM tree or {\tt NULL} on an error.
 def ixmlNodetoString(doc):
 	return IXMLLib.ixmlNodetoString(doc)
@@ -1437,12 +1437,12 @@ IXMLLib.ixmlNodetoString.argtypes = [POINTER(IXML_Node)]
 
 ##
 # Makes the XML parser more tolerant to malformed text.
-#	  
-# If {\bf errorChar} is 0 (default), the parser is strict about XML 
-# encoding : invalid UTF-8 sequences or "&" entities are rejected, and 
+#
+# If {\bf errorChar} is 0 (default), the parser is strict about XML
+# encoding : invalid UTF-8 sequences or "&" entities are rejected, and
 # the parsing aborts.
-# If {\bf errorChar} is not 0, the parser is relaxed : invalid UTF-8 
-# characters are replaced by the {\bf errorChar}, and invalid "&" entities 
+# If {\bf errorChar} is not 0, the parser is relaxed : invalid UTF-8
+# characters are replaced by the {\bf errorChar}, and invalid "&" entities
 # are left untranslated. The parsing is then allowed to continue.
 def ixmlRelaxParser(errorChar):
 	IXMLLib.ixmlRelaxParser(errorChar)
@@ -1454,7 +1454,7 @@ IXMLLib.ixmlRelaxParser.argtypes = [c_char]
 #
 # @param bufferStr The buffer that contains the XML text to convert to a Document.
 #
-# @return [Document*] A {\bf Document} if the buffer correctly parses or 
+# @return [Document*] A {\bf Document} if the buffer correctly parses or
 #					 {\tt NULL} on an error.
 def ixmlParseBuffer(bufferStr):
 	return IXMLLib.ixmlParseBuffer(bufferStr)
@@ -1475,9 +1475,9 @@ IXMLLib.ixmlParseBuffer.argtypes = [c_char_p]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: The {\bf buffer} is not a valid 
+#	 \item {\tt IXML_INVALID_PARAMETER}: The {\bf buffer} is not a valid
 #		   pointer.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlParseBufferEx(bufferStr, doc):
@@ -1491,7 +1491,7 @@ IXMLLib.ixmlParseBufferEx.argtypes = [c_char_p, POINTER(POINTER(IXML_Document))]
 #
 # @param xmlFile The filename of the XML text to convert to a document.
 #
-# @return [Document*] A {\bf Document} if the file correctly parses or 
+# @return [Document*] A {\bf Document} if the file correctly parses or
 #					 {\tt NULL} on an error.
 def ixmlLoadDocument(xmlFile):
 	return IXMLLib.ixmlLoadDocument(xmlFile)
@@ -1512,9 +1512,9 @@ IXMLLib.ixmlLoadDocument.argtypes = [c_char_p]
 # @return [int] An integer representing one of the following:
 #   \begin{itemize}
 #	 \item {\tt IXML_SUCCESS}: The operation completed successfully.
-#	 \item {\tt IXML_INVALID_PARAMETER}: The {\bf xmlFile} is not a valid 
+#	 \item {\tt IXML_INVALID_PARAMETER}: The {\bf xmlFile} is not a valid
 #		   pointer.
-#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists 
+#	 \item {\tt IXML_INSUFFICIENT_MEMORY}: Not enough free memory exists
 #		   to complete this operation.
 #   \end{itemize}
 def ixmlLoadDocumentEx(xmlFile, doc):
@@ -1528,8 +1528,8 @@ IXMLLib.ixmlLoadDocumentEx.argtypes = [c_char_p, POINTER(POINTER(IXML_Document))
 #
 # @param src The source DOMString to clone.
 #
-# @return [DOMString] A new {\bf DOMString} that is a duplicate of the 
-#					 original or {\tt NULL} if the operation could not 
+# @return [DOMString] A new {\bf DOMString} that is a duplicate of the
+#					 original or {\tt NULL} if the operation could not
 #					 be completed.
 def ixmlCloneDOMString(src):
 	return IXMLLib.ixmlCloneDOMString(src)

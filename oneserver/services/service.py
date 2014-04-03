@@ -46,7 +46,7 @@ class Service:
 	def upnpAddResponse(event, key, value):
 		if event is None or event['status'] is False or key is None or value is None:
 			return False
-		
+
 		res = wrappers.upnp.upnptools.UpnpAddToActionResponse(event['request'].ActionResult,
 							event['request'].ActionName,
 							event['service']['type_t'],
@@ -106,13 +106,13 @@ class Service:
 			value = Service.upnpGetString(request, Service.ARG_CONTAINER_ID)
 
 		return int(value) if value else 0
-	
+
 	##
 	# Gets the protocol for the mime type.
 	@staticmethod
 	def mimeGetProtocol(mimeType):
 		if not mimeType:
 			return None
-		
+
 		return mimeType.mime_protocol + '*'
 

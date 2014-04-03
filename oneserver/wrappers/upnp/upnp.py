@@ -866,7 +866,7 @@ class UPnP:
 	# @param Cookie Pointer to user data returned with the callback function
 	# when invoked.
 	# @param Hnd Pointer to a variable to store the new control point handle.
-	# 
+	#
 	# @return An integer representing one of the following:
 	# UPNP_E_SUCCESS, UPNP_E_FINISH, UPNP_E_INVALID_PARAM, UPNP_E_OUTOF_MEMORY.
 	def UpnpRegisterClient(self,Callback, Cookie, Hnd):
@@ -992,7 +992,7 @@ class UPnP:
 	# so the effect of this function is global to the SDK
 	# (= same as UpnpSetMaxContentLength).
 	#
-	# @param Hnd 
+	# @param Hnd
 	# @param contentLength
 	def UpnpSetContentLength(self, Hnd, contentLength):
 		return self.upnp.UpnpSetContentLength(Hnd, contentLength)
@@ -1059,7 +1059,7 @@ class UPnP:
 	# the announcements.
 	# @param Exp The expiration age, in seconds, of the
 	# announcements.
-	# 
+	#
 	# @return An integer representing one of the following:
 	# UPNP_E_SUCCESS, UPNP_E_INVALID_HANDLE,
 	# UPNP_E_OUTOF_MEMORY
@@ -1705,7 +1705,7 @@ class UPnP:
 
 	##
 	# UpnpAddVirtualDir adds a virtual directory mapping.
-	# 
+	#
 	# All webserver requests containing the given directory are read using functions contained
 	# in a UpnpVirtualDirCallbacks structure registered via UpnpSetVirtualDirCallbacks.
 	#
@@ -1717,7 +1717,7 @@ class UPnP:
 
 	##
 	# UpnpRemoveVirtualDir removes a virtual directory mapping made with UpnpAddVirtualDir
-	# 
+	#
 	# @param The name of teh virtual directory mapping to remove.
 	#
 	# @return An integer representing one of the following: UPNP_E_SUCCESS, UPNP_E_INVALID_ARGUMENT.

@@ -20,7 +20,7 @@ class ConfigError(Exception):
 ##
 # This class is for all the errors that deal with loading a Yaml file
 class LoadingError(ConfigError):
-	
+
 	##
 	# Constructs a LoadingError with value and point
 	def __init__(self, value, point):
@@ -36,11 +36,11 @@ class DumpingError(ConfigError):
 	def __init__(self, value, point):
 		self.point = point
 		self.value = value
-		
+
 ##
-# This class is for all the errors that deal with the config manager		
+# This class is for all the errors that deal with the config manager
 class ConfigManagerError(ConfigError):
-	
+
 	##
 	# Constructs a ConfigManagerError with value and point
 	def __init__(self, value, point):

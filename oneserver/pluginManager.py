@@ -2,6 +2,7 @@
 # @author Benjamin Ebert
 # @date 11-5-12
 # @version 1.0
+
 from configuration.configManager import ConfigManager
 from plugin.interface import IAdministrationPlugin
 from plugin.interface import IStoragePlugin
@@ -25,14 +26,14 @@ class PluginManager(object):
 	##
 	# The instance of this singleton
 	_instance = None
-	
+
 	##
 	# Overides the __new__ of PluginManager to make sure we only have one instance
 	def __new__(cls, *args, **kwargs):
 		if not cls._instance:
 			cls._instance = super(PluginManager, cls).__new__(cls, *args, **kwargs)
 		return cls._instance
-	
+
 	##
 	# Initializes PluginManager when it is created
 	def __init__(self):
@@ -40,15 +41,15 @@ class PluginManager(object):
 		self.env = PluginEnvironment("OneServer")
 		PluginGlobals.push_env(self.env)
 
-		
+
 		self.eggLoader = PluginFactory("EggLoader",namespace="project1",env='pca')
 	#	PluginGlobals.env().load_services(path='./plugin/p',auto_disable=False) #Needs to be changed after this works
 		PluginGlobals.env().load_services(path=sys.path,auto_disable=False) #Needs to be changed after this works
-		
+
 		self.administratorPlugins = ExtensionPoint(IAdministrationPlugin)
 		self.storagePlugins = ExtensionPoint(IStoragePlugin)
 		self.utilityPlugins = ExtensionPoint(IUtilityPlugin)
-	
+
 	##
 	# Loads Plugin List from configManager
 	#
@@ -56,7 +57,7 @@ class PluginManager(object):
 	def loadEnablePluginList(self, configManager):
 		OneServerManager().log.debug('Loaded Enabled Plugin List...')
 		self.enabledPluginList = configManager.getCoreConfig('Plugins')
-		
+
 	##
 	# Enables Plugin in the config file
 	#
@@ -65,7 +66,7 @@ class PluginManager(object):
 	def enablePluginInConfig(self, pluginName, configManager):
 		key = 'Plugins.'+pluginName
 		configManager.setCoreConfig(key, pluginName)
-		
+
 	##
 	# Disables Plugin in config file
 	#
@@ -75,14 +76,14 @@ class PluginManager(object):
 		if pluginName in self.enabledPluginList:
 			del self.enabledPluginList[pluginName]
 			configManager.removePlugin(pluginName)
-			
+
 	##
 	# Enables Admin Plugins that are supposed to be enabled
 	def enableAdminPlugins(self):
 		if(self.enabledPluginList!=None):
 			for enabledPlugin in self.enabledPluginList:
 				self.enableAdminPlugin(enabledPlugin)
-	
+
 	##
 	# Enables the specified admin Plugin
 	#
@@ -92,14 +93,14 @@ class PluginManager(object):
 			if self.administratorPlugins(pluginName):
 				self.env.activate(self.administratorPlugins(pluginName))
 				self.administratorPlugins(pluginName).enable()
-	
+
 	##
 	# Enables Storage Plugins that are suppose to be enabled
 	def enableStoragePlugins(self):
 		if(self.enabledPluginList!=None):
 			for enabledPlugin in self.enabledPluginList:
 				self.enableStoragePlugin(enabledPlugin)
-	
+
 	##
 	# Enables the specified storage Plugin
 	#
@@ -110,14 +111,14 @@ class PluginManager(object):
 				OneServerManager().log.debug('enable storage plugin...')
 				self.env.activate(self.storagePlugins(pluginName))
 				self.storagePlugins(pluginName).enable()
-	
+
 	##
 	# Enables Utility Plugins that are supposed to be enabled
 	def enableUtilityPlugins(self):
 		if(self.enabledPluginList!=None):
 			for enabledPlugin in self.enabledPluginList:
 				self.enableUtilityPlugin(enabledPlugin)
-	
+
 	##
 	# Enables the specified utility Plugin
 	#
@@ -127,7 +128,7 @@ class PluginManager(object):
 			if self.utilityPlugins(pluginName):
 				self.env.activate(self.utilityPlugins(pluginName))
 				self.utilityPlugins(pluginName).enable()
-	
+
 	##
 	# Disables the specified Admin Plugin
 	#
@@ -136,7 +137,7 @@ class PluginManager(object):
 		if self.administratorPlugins(pluginName):
 			self.administratorPlugins(pluginName).disable()
 			self.env.deactivate(self.administratorPlugins(pluginName))
-	
+
 	##
 	# Disables the specified Utility Plugin
 	#
@@ -145,7 +146,7 @@ class PluginManager(object):
 		if self.utilityPlugins(pluginName):
 			self.utilityPlugins(pluginName).disable()
 			self.env.deactivate(self.utilityPlugins(pluginName))
-	
+
 	##
 	# Disables the specified Storage Plugin
 	#
@@ -154,7 +155,7 @@ class PluginManager(object):
 		if self.storagePlugins(pluginName):
 			self.storagePlugins(pluginName).disable()
 			self.env.deactivate(self.storagePlugins(pluginName))
-	
+
 	##
 	# Returns a true or false depending if the plugin is enabled
 	#
@@ -166,8 +167,8 @@ class PluginManager(object):
 			return self.env.active_services(self.storagePlugins(pluginName))
 		elif self.utilityPlugins(pluginName):
 			return self.env.active_services(self.utilityPlugins(pluginName))
-	
-	
+
+
 	##
 	# Reloads the plugin specified
 	#
@@ -180,13 +181,13 @@ class PluginManager(object):
 			plugin = self.storagePlugins(pluginName)
 		elif self.utilityPlugins(pluginName):
 			plugin = self.utilityPlugins(pluginName)
-		
+
 		if plugin != None:
 			plugin.unload()
 			plugin.load()
 		else:
 			raise ValueError("{0} not found!".format(pluginName))
-	
+
 	##
 	# Calls the load method in the plugin
 	#
@@ -203,12 +204,12 @@ class PluginManager(object):
 		elif self.utilityPlugins(pluginName):
 			plugin = self.utilityPlugins(pluginName)
 			OneServerManager().log.debug('Loaded Utility Plugin...')
-		
+
 		if plugin != None:
 			plugin.load()
 		else:
 			raise ValueError("{0} not found!".format(pluginName))
-	
+
 	##
 	# Calls the unload method in the plugin and removed it from the holder
 	#
@@ -221,12 +222,12 @@ class PluginManager(object):
 			plugin = self.storagePlugins(pluginName)
 		elif self.utilityPlugins(pluginName):
 			plugin = self.utilityPlugins(pluginName)
-		
+
 		if plugin != None:
 			plugin.unload()
 		else:
 			raise ValueError("{0} not found!".format(pluginName))
-			
+
 	##
 	# Loads in all plugins
 	def loadPlugins(self):
@@ -235,8 +236,8 @@ class PluginManager(object):
 	#		OneServerManager().log.debug(plugin)
 		OneServerManager().log.debug('Loading Plugins...')
 	#	self.eggLoader.load(PluginGlobals.env(),'./plugin/p',disable_re=False,name_re="*")
-		
-		
+
+
 	##
 	# Return Admin plugins
 	def getAdminPlugins(self):

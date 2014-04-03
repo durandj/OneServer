@@ -22,7 +22,7 @@ class OneServer(object):
 	def __init__(self):
 		#Create a manager for different instances.
 		self.manager = OneServerManager()
-		
+
 		# Load the configurations.
 		self.config = ConfigManager()
 		self.config.loadConfigFile()
@@ -38,7 +38,7 @@ class OneServer(object):
 		self.manager.log = self.log
 
 		self.log.info('Preparing the OneServer media server to start...')
-		
+
 		# Start plugin loader.
 		self.pluginManager = PluginManager()
 		self.manager.pluginManager = self.pluginManager
@@ -51,7 +51,7 @@ class OneServer(object):
 		self.storagePlugins = self.pluginManager.getStoragePlugins()
 		self.adminPlugins = self.pluginManager.getAdminPlugins()
 		self.utilityPlugins = self.pluginManager.getUtilityPlugins()
-		
+
 		# Start scheduler.
 		self.log.debug('Starting task scheduler...')
 
@@ -60,21 +60,21 @@ class OneServer(object):
 		self.scheduler.startScheduler()
 
 		self.log.debug('Task scheduler started.')
-		
+
 		# Start VFS
 		self.log.debug('Starting virtual file system...')
 
 		#TODO: Load loaded Storage plugins into vfs
 		self.vfs = VirtualFileSystem()
 		plugins = self.storagePlugins
-		
+
 		for plugin in plugins:
 			if plugin != None:
 				self.log.debug("Loading Storage Plugin : " + plugin)
 			self.vfs.loadDataSource(plugin)
 
 		self.log.debug('Virtual file system started.')
-		
+
 		# Start DLNA
 		self.log.debug('Preparing DLNA service...')
 
@@ -82,7 +82,7 @@ class OneServer(object):
 		self.manager.dlna = self.dlna.dlna
 
 		self.log.debug('DLNA service ready.')
-		
+
 		#Temporary Content Store
 		self.log.debug('Creating temporary content store...')
 
@@ -119,7 +119,7 @@ if __name__ == '__main__':
 	run = True
 	while(run):
 		cmd = raw_input("What do you want to do? ")
-		
+
 		if ("stop" or "Stop") in cmd:
 			run = False
 		else:
